@@ -39,7 +39,7 @@ app.get("/",(req,res)=>{
 })
 
 
-app.listen(4000,()=>{
-    console.log("server is working");
+app.listen(process.env.PORT,()=>{
+    console.log(`server is working on port ${process.env.PORT}`);
 })
 
