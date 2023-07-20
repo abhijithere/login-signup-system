@@ -35,7 +35,7 @@ app.use("/api/v1/users",router)
 
 
 app.get("/",(req,res)=>{
-    res.send("server is working")
+    res.send("server is working properly")
 })
 
 
