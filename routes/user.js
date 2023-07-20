@@ -3,11 +3,12 @@ import  express  from "express";
 import { login,register,getallusers,getuserdetails ,logout,updateuser,deleteUser} from "../controllers/user.js";
 
 import { isAuthenticated } from "../middleware/auth.js";
+import upload from '../middleware/uploadfile.js'
 
 const router =express.Router();
 
 
-router.post("/new",register)
+router.post("/new",upload.single('profilepic'),register)
 router.get("/alluser",getallusers) 
 
 router.post("/login",login)

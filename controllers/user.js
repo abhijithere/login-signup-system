@@ -3,6 +3,7 @@ import { sendcookie } from "../utils/features.js";
 import bcrypt from "bcrypt"
 
 
+
 export const getallusers =  async (req,res)=>{
 
     try {
@@ -48,13 +49,14 @@ export const register =async(req,res)=>{
 
         const {name,email,password,profilepic,bio} = req.body;
         let user = await User.findOne({email})
+        const newlink= req.file.path
     
         if(user) return res.status(404).json({
             success:false,
             message:"user already exist",
         })
         const hashedpassword = await bcrypt.hash(password,10);
-        user = await User.create({name,email,bio,password:hashedpassword,profilepic,bio})
+        user = await User.create({name,email,bio,password:hashedpassword,profilepic:newlink,bio})
     
         sendcookie(user,res,"registered successfully",201)
         
